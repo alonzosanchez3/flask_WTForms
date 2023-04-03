@@ -8,8 +8,8 @@ import os
 load_dotenv()
 
 class LoginForm(FlaskForm):
-    email = StringField(label='Email')
-    password = PasswordField(label='Password')
+    email = StringField(label='Email', validators=[DataRequired()])
+    password = PasswordField(label='Password', validators=[DataRequired()])
     submit = SubmitField(label="Log In")
 
 
@@ -37,9 +37,10 @@ app.secret_key = os.getenv('SECRET_KEY')
 def home():
     return render_template('index.html')
 
-@app.route('/login')
+@app.route('/login', methods=["GET", "POST"])
 def get_login():
     login_form = LoginForm()
+    login_form.validate_on_submit()
     return render_template('login.html', form=login_form)
 
 
