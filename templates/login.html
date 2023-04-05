@@ -7,7 +7,7 @@
 	<body>
         <div class="container">
 		<h1>Login</h1>
-        <form method="POST" action="{{url_for('get_login')}}">
+        <form method="POST" action="{{url_for('get_login')}}" novalidate>
 					{{form.csrf_token}}
 					<p>
 
