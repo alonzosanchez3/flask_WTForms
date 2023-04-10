@@ -4,6 +4,7 @@ from wtforms import StringField, PasswordField, SubmitField
 from dotenv import load_dotenv
 from wtforms.validators import DataRequired, Email, Length
 import os
+from flask_bootstrap import Bootstrap5
 
 load_dotenv()
 
@@ -31,6 +32,7 @@ This will install the packages from requirements.txt for this project.
 
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
+bootstrap = Bootstrap5(app)
 
 
 @app.route("/")
